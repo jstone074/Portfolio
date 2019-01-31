@@ -1,6 +1,46 @@
 
 $(document).ready(function() {
 
+  //firebase
+  
+  var config = {
+    apiKey: "AIzaSyC0dYy6KQeFiKQBnAKztxHeCREsJekEUEs",
+    authDomain: "contactform-25630.firebaseapp.com",
+    databaseURL: "https://contactform-25630.firebaseio.com",
+    projectId: "contactform-25630",
+    storageBucket: "contactform-25630.appspot.com",
+    messagingSenderId: "1082650381691"
+  };
+  firebase.initializeApp(config);
+  
+  var database = firebase.database();
+  $(document).on("click", "#submit", function () {
+ 
+    var contactName = $("#contactName").val().trim();
+    var contactEmail = $("#contactEmail").val().trim();
+    var contactMessage = $("#contactMessage").val().trim();
+    
+
+    function contactInfo(contactName, contactEmail, contactMessage) {
+      database.ref().push({
+
+        name: contactName,
+        email: contactEmail,
+        message: contactMessage
+        
+      });
+
+    };
+
+    contactInfo(contactName, contactEmail, contactMessage);
+
+    $("#contactName").val("");
+    $("#contactEmail").val("");
+    $("#contactMessage").val("");
+  
+  });
+  
+  
   // Smooth scrolling
   $(function() {
     $('a[href*="#"]:not([href="#"])').click(function() {
