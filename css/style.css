@@ -38,7 +38,11 @@ a {
 /* ==================================================
   Elements
   ================================================== */
-.btn {
+.carousel-control-next-icon {
+  background-image:black;
+}
+
+  .btn {
   background-color: #199EB8;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 800;
